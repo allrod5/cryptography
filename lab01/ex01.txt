@@ -1,0 +1,7 @@
+O algoritmo de criptografia de Vigenère é baseado tão somente no índice das letras do alfabeto, contando 'A' como
+0, 'B' como 1 e assim por diante sempre. Portanto a substituição das letras por seus respectivos índices é
+suficiente para operar o referido algoritmo, já que o "shift" de substituição de cada letra é dado pelo
+índice da letra, correspondente à coluna em que se encontra o a letra na mensagem original, que se encontra na
+mesma coluna porém na chave (devidamente repetida para mensagens maiories do que a chave). Por fim o módulo de 26 é
+aplicado sobre o resultado para ciclar adequadamente o "shift" de volta para o início do alfabeto após passar a
+última letra.
