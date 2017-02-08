@@ -17,15 +17,15 @@ int main() {
                   << "            q - quit"
                   << std::endl;
 
-        char opt = 0;
+        char opt = '0';
 
         std::cin >> opt;
 
         switch(opt) {
-            case 0:
+            case '0':
                 encrypt();
                 break;
-            case 1:
+            case '1':
                 decrypt();
                 break;
             case 'q':
