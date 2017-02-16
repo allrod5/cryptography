@@ -1,0 +1,41 @@
+:::::::::::::::::ENCRYPT N DECRYPT:::::::::::::::::
+
+ by: Rodrigo Martins de Oliveira (github:allrod5)
+
+
+ Enter with an elegible option:
+  (default) 0 - encrypt
+            1 - decrypt
+            i - information about the encryption system implemented
+            q - quit
+0
+::::::::::::::::::::::ENCRYPT::::::::::::::::::::::
+
+ Enter with a message to encrypt: 
+Rodrigo Martins de Oliveira
+
+ Type in the encryption key: 
+segurancadedados
+
+ The encrypted message is:
+
+jsjlzgb mdvwiqg vi iciigiue
+
+ Enter with an elegible option:
+  (default) 0 - encrypt
+            1 - decrypt
+            i - information about the encryption system implemented
+            q - quit
+1
+::::::::::::::::::::::DECRYPT::::::::::::::::::::::
+
+ Enter with the encrypted message: 
+jsjlzgb mdvwiqg vi iciigiue
+
+ Type in the decryption key: 
+segurancadedados
+
+ The decrypted message is:
+
+rodrigo martins de oliveira
+
