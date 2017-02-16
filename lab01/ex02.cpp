@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <string>
 
@@ -15,6 +16,7 @@ int main() {
         std::cout << "\n Enter with an elegible option:\n"
                   << "  (default) 0 - encrypt\n"
                   << "            1 - decrypt\n"
+                  << "            i - information about the encryption system implemented\n"
                   << "            q - quit"
                   << std::endl;
 
@@ -29,6 +31,11 @@ int main() {
             case '1':
                 decrypt();
                 break;
+            case 'i':
+                std::cout << "This program implements the Vignère cypher.\n"
+                        "The implementation adopted transforms every character dealt as input into it's lowercase form.\n"
+                        "Spaces are not encrypted nor decrypted and the only expected input are letters and spaces only, no other characters are supported." << std::endl;
+                break;
             case 'q':
                 quit = true;
                 break;
@@ -36,13 +43,15 @@ int main() {
                 std::cout << "Unrecognized option!" << std::endl;
                 break;
         }
+
+        std::cin.ignore();
+        std::cin.clear();
     }
 
     return 0;
 }
 
 void decrypt() {
-    int modifier;
     std::string message, key;
 
     std::cin.clear();
@@ -51,16 +60,16 @@ void decrypt() {
 
     std::cin.ignore();
     std::getline(std::cin, message);
+    std::transform(message.begin(), message.end(), message.begin(), ::tolower);
 
     std::cout << "\n Type in the decryption key: \n";
 
     std::getline(std::cin, key);
+    std::transform(key.begin(), key.end(), key.begin(), ::tolower);
 
     for (int i=0; i<message.length(); i++) {
         if (message[i] == ' ') continue;
-        modifier = message[i] < 'a' ? (int)'A' : (int)'a';
-        std::cout << (char) modifier << ", " << (char) message[i] << ", " << (char) key[i%key.length()] << ", " << (char) (((int)((int)message[i] - (int)key[i%key.length()]) + 26) % 26 + modifier) << "\n"; 
-        message[i] = (char) ((((int)((int)message[i] - (int)key[i%key.length()]) + 26) % 26) + modifier);
+        message[i] = (char) ((((int)message[i] - (int)key[i % key.length()] + 26) % 26) + 'a');
     }
 
     std::cout << "\n The decrypted message is:\n\n"
@@ -68,5 +77,26 @@ void decrypt() {
 }
 
 void encrypt() {
+    std::string message, key;
 
+    std::cin.clear();
+    std::cout << "::::::::::::::::::::::ENCRYPT::::::::::::::::::::::\n\n"
+              << " Enter with a message to encrypt: \n";
+
+    std::cin.ignore();
+    std::getline(std::cin, message);
+    std::transform(message.begin(), message.end(), message.begin(), ::tolower);
+
+    std::cout << "\n Type in the encryption key: \n";
+
+    std::getline(std::cin, key);
+    std::transform(key.begin(), key.end(), key.begin(), ::tolower);
+
+    for (int i=0; i<message.length(); i++) {
+        if (message[i] == ' ') continue;
+        message[i] = (char) ((message[i] + key[i%key.length()] - 2*'a') % 26 + 'a');
+    }
+
+    std::cout << "\n The encrypted message is:\n\n"
+              << message;
 }
