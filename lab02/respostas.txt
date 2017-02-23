@@ -1,0 +1,45 @@
+I)
+    1. Todos os 8 bytes da saída foram alterados em relação a última saída após alterar apenas um bit na mensagem original.
+
+       Pode se concluir desta observação que o DES apresenta boa confidenciabilidade frente à tecnicas de criptanálise
+       básicas que tentam decifrar uma parte da mensagem para decifrar o resto, pois para descriptografar apenas é possível
+       descriptografar a mensagem como um todo visto que a mensagem inteira que determina a saída, isto é, a cada mensagem
+       diferente, mesmo que por um único bit, o resultado da criptografia é totalmente diferente.
+    
+
+    2. Foram efetuadas 16 execuções da função de Feistel quando foi utilizado o DES.
+
+       Foram efetuadas 48 execuções da função de Feistel quando foi utilizado o Triple DES.
+
+
+    3. O tamanho da chave, em bits, nessa implementação do Triple DES é de 64 bits, porém 8 bits são bits de paridade, ou
+       seja, o tamanho efetivo da chave é de 56 bits.
+
+       Nenhuma é mais segura que a outra, visto que ambas são, em essência, chaves 56-bit. A única diferença é que a chave
+       com os bits extras de paridade é menos sucetível à corrupção.
+
+    4. O conceito de confusão é aplicado na etapa de substituição da função de Feistel. O conceito de difusão é aplicado
+       na etapa de permutação da função de Feistel.
+
+    5. As diferentes chaves usadas em cada rodada da função de Feistel são guardadas no vetor KS.
+
+       São geradas 16 chaves derivadas para a execução do DES simples.
+
+    6. 75% dos bits em L[0] e R[0] são iguais a zero e 25%, iguais a um.
+
+       Antes do Round 2 L[1] preserva uma proporção de 3:1 no número de bit iguais a zero pelo número de bits iguais a um.
+       Já em R[1] 46.875% dos bits são zeros e 53.125% dos bits são um.
+
+       Isto não ocorre com o DES, pois após a primeira rodada cerca de 60% dos bits são iguais a zero. Portanto o DES não
+       é uma cifra tão forte.
+
+II)
+    1. Sim, os pseudocódigos estão corretos. A encriptação leva 10 rodadas para retornar a mensagem cifrada, assim como a
+       decriptação, apesar do laço de repetição ter apenas 9 iterações o XOR da décima chave é realizado logo antes do
+       início do laço de repetição, com a função AddRoundKey.
+
+    2. O vetor w armazena as palavras das chaves expandidas.
+
+III)
+    1. 
+
